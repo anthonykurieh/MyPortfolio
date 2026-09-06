@@ -1,0 +1,10 @@
+# Working notes for this repo, deliberately not published.
+# CLAUDE.md records which figures on the site are measured vs illustrative,
+# unresolved provenance questions, and details about past employers.
+# The repo is public; none of that should be.
+CLAUDE.md
+
+# Never let a source archive near a public static host again.
+*.zip
+
+.DS_Store
