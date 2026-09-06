@@ -793,6 +793,9 @@ footer .big em{font-style:normal;color:var(--signal)}
   .wf-row{grid-template-columns:3.8rem 1fr 3.4rem}
   .tri-mx{grid-template-columns:1fr 1fr}
   .cr-grid{grid-template-columns:repeat(3,1fr);gap:.6rem}
+  .ooh-grid{grid-template-columns:1fr}
+  .ooh-row{grid-template-columns:6.2rem 1fr 2.1rem 2.7rem}
+  .ooh-f,.ooh-v,.ooh-w,.ooh-id,.ooh-fmt{font-size:.7rem}
   .gan-row{grid-template-columns:5.4rem 1fr 2.9rem}
   .gan-c,.gan-p{font-size:.7rem}
   #spuSvg text,#ganSvg text{font-size:9px}
@@ -803,6 +806,35 @@ footer .big em{font-style:normal;color:var(--signal)}
   .gly{max-width:100%}
   .ca-sql{margin-left:0}
 }
+/* ═══════════════════════════════════════════════════════════
+   WIDGET — OOH site scoring
+   ═══════════════════════════════════════════════════════════ */
+.ooh-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem}
+.ooh-cell{
+  display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;
+  gap:.1rem .55rem;align-items:center;cursor:pointer;font:inherit;color:inherit;text-align:left;
+  background:var(--surface);border:1px solid var(--line-soft);border-radius:8px;padding:.5rem .6rem;
+  transition:border-color .2s,background .2s;
+}
+.ooh-cell:hover{border-color:var(--line)}
+.ooh-cell.on{border-color:var(--signal);background:color-mix(in oklab,var(--signal) 10%,var(--surface))}
+.ooh-sc{
+  grid-row:1 / span 2;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+  font-size:1.45rem;letter-spacing:-.04em;line-height:1;color:var(--ink-2);
+}
+.ooh-cell.on .ooh-sc{color:var(--signal)}
+.ooh-id{font-family:"JetBrains Mono",monospace;font-size:.62rem;color:var(--ink-2)}
+.ooh-fmt{font-family:"JetBrains Mono",monospace;font-size:.53rem;color:var(--ink-3)}
+.ooh-rk{display:none}
+.ooh-facts{display:grid;gap:.3rem}
+.ooh-row{display:grid;grid-template-columns:6.6rem 1fr 1.8rem 2.4rem;align-items:center;gap:.45rem}
+.ooh-f{font-family:"JetBrains Mono",monospace;font-size:.56rem;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ooh-bar{height:7px;background:var(--line-soft);border-radius:3px;overflow:hidden}
+.ooh-bar i{display:block;height:100%;width:0;background:var(--signal);border-radius:3px;transition:width .4s ease}
+.ooh-bar i.neg{background:var(--ink-3)}
+.ooh-v{font-family:"JetBrains Mono",monospace;font-size:.56rem;color:var(--ink-2);text-align:right}
+.ooh-w{font-family:"JetBrains Mono",monospace;font-size:.54rem;color:var(--ink-3);text-align:right}
+
 /* ═══════════════════════════════════════════════════════════
    WIDGET — SPU output modes / CTGAN modes
    ═══════════════════════════════════════════════════════════ */
@@ -1142,14 +1174,14 @@ footer .big em{font-style:normal;color:var(--signal)}
   <section class="chapter" id="the_field">
     <div class="ch-tag mono rise">), <span class="nm">the_field</span> <span class="kw">AS</span> (</div>
     <div class="col">
-      <h2 class="display rise">Three jobs before Dubai, and the one that changed what I wanted to do.</h2>
-      <p class="lead rise">Between graduating and Dubai I worked in three places with almost nothing in common: a sales startup in Washington, a semiconductor company in Beirut, and a shipping line. Two were internships and one was a short remote role that ended when the company turned out not to be the company it had described. All three pointed at the two things I have been doing ever since, which are vision and prediction.</p>
+      <h2 class="display rise">Three internships, and the one that changed what I wanted to do.</h2>
+      <p class="lead rise">Between graduating and Dubai I worked in three places with almost nothing in common: a sales startup in Washington, a semiconductor company in Beirut, and a shipping line. All three pointed at the two things I have been doing ever since, which are vision and prediction.</p>
     </div>
 
     <div class="tl rise">
       <div class="item">
         <div class="when">Remote · Washington, USA</div>
-        <div class="what">AI / ML Engineer <span>· Salesdash</span></div>
+        <div class="what">AI / ML Engineering Intern <span>· Salesdash</span></div>
         <p>Two threads at once. A whitespace model over the sales pipeline, forecasting how much budget an account had left to spend. And a Slack chatbot built on LLMs, where the model was the easy part: the work was context and memory, deciding what the bot should still know three messages later and what it was better off forgetting. The first thing I shipped with a language model inside it.</p>
       </div>
       <div class="item">
@@ -1326,29 +1358,74 @@ footer .big em{font-style:normal;color:var(--signal)}
     </div>
 
     <div class="col">
-      <h3 class="rise" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.03em;margin:3rem 0 .5rem">Two apps I shipped with an AI builder, and the parts it could not do</h3>
-      <p class="rise">Both of these were built in <strong>Lovable</strong>, and I want that said at the top rather than discovered in a repo. You describe the application you want, it writes React and TypeScript against a Postgres backend, and you iterate by talking to it. For a working tool that has to exist next month, that is a completely reasonable way to start, and pretending otherwise would be posturing.</p>
-      <p class="rise">What it does not do is make the decisions that determine whether the thing is safe to put real data in. That part is still yours, and it is where both of these projects actually went.</p>
-      <p class="rise">The first is an <strong>out-of-home planning tool</strong>: billboards, digital screens, lamp posts and wall wraps as inventory you can filter, map and attach to a campaign. Screens are typed and status-tracked, so a planner can see what is available rather than booked, and each site gets enriched from third-party location data with what is actually around it. The useful part is the layer beside it. Your own stores and your competitors' stores sit on the same map as the inventory, so the question stops being which billboard is available and becomes which billboard is near my restaurant and not near theirs.</p>
-      <p class="rise">The second is a <strong>lead manager for a property developer</strong>. Enquiries arrive from social ads, land in the database, get assigned to one of the sales team, and move through a pipeline from new to contacted to qualified to won or lost, with follow-ups and an activity trail against each one. An admin sets roles and sees who is converting.</p>
-      <p class="rise">That second one is the one that taught me something, because a CRM holding real people's names and phone numbers is a different category of thing from a dashboard. Three decisions in it are mine and none of them were prompted for.</p>
-      <p class="rise"><strong>Personal data is encrypted at rest in the database</strong>, not merely access-controlled. Names and contact details go through symmetric encryption on write, decryption is a privileged function that anonymous users are explicitly revoked from, and the application reads through views rather than touching the columns. It means a leaked read-only credential yields ciphertext.</p>
-      <p class="rise"><strong>Email goes through a real queue with a dead letter queue behind it.</strong> Sending an email inline from a request handler works until a provider is slow, and then it fails silently and nobody knows which leads never got contacted. Messages are enqueued, read in batches, and anything that fails repeatedly is moved aside rather than retried forever or dropped. Unsubscribes, bounces and complaints are recorded in a suppression list that every send checks first, because the fastest way to lose a sending domain is to keep mailing people who asked you not to.</p>
-      <p class="rise"><strong>Access control is enforced in the database, not in the interface.</strong> Nineteen tables have row level security on, with roles resolved through a privileged helper so that checking whether you are an admin does not itself trip the policy that decides whether you can read the roles table. That recursion is the standard trap and it is worth knowing about before you hit it.</p>
+      <h3 class="rise" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.03em;margin:3rem 0 .5rem">Three applications, built with an AI builder</h3>
+      <p class="rise">These three were built in <strong>Lovable</strong>, and I would rather say that at the top than have it discovered in a repository. You describe the application you want, it writes React and TypeScript against a Postgres backend, and you iterate by talking to it. For an internal tool that has to exist next month, that is a reasonable way to start, and pretending otherwise would be posturing.</p>
+      <p class="rise">What it does not do is make the decisions that determine whether the thing is safe to put real data in, or whether the numbers it shows mean anything. That part is still yours, and it is the part each of these write-ups is about.</p>
+
+      <h3 class="rise" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.03em;margin:2.6rem 0 .5rem">Scoring a billboard for a specific audience</h3>
+      <p class="rise">The first is an out-of-home mapper: every poster, screen, mupi and wall wrap a brand runs, placed on a map by latitude and longitude, tagged with format, media owner, price, campaign dates and the year it ran. That last field is what makes it more than an inventory list, because with a year on every row you can put 2025 next to 2026, or your own sites next to a competitor's, and see how a market moved.</p>
+      <p class="rise">A map of billboards is only useful if you can rank them, and ranking them is where the actual thinking is. A site is not good or bad in the abstract. <strong>It is good or bad for somebody.</strong> So sites are scored per audience segment, and the score is a composite of things that can be measured about a location rather than a number a media owner tells you: how well the surrounding area matches the segment, how dense the places around it are, how much traffic passes it, how congested that traffic is, and what nearby venues pull people past that spot in the first place.</p>
+      <p class="rise">Two of those deserve a note. <strong>Congestion cuts both ways</strong>, and that is why it carries a negative weight for most segments and a positive one for commuters: a jam is dwell time if your audience is sitting in it and a reason to look away if they are not. And the magnet list is the part planners actually argue with, because "this screen scores well because of the stadium and the food court next to it" is a claim someone can check, where a single number is not.</p>
+      <p class="rise">Pick a segment below and the ranking reorders. The same physical billboard moves several places depending on who you are trying to reach.</p>
     </div>
 
-    <div class="card rise" style="margin-top:1.6rem;max-width:660px">
-      <div class="card-head"><span class="dot"></span> What the builder generated, and what it did not</div>
-      <div class="card-body">
-        <div class="readout" style="margin-top:0">
-          <div><span class="rk">generated  </span><span class="rv">React, TypeScript, routing, UI</span></div>
-          <div><span class="rk">mine       </span><span class="rv">schema, roles, RLS policies</span></div>
-          <div><span class="rk">mine       </span><span class="rv">PII encryption and key handling</span></div>
-          <div><span class="rk">mine       </span><span class="rv">queue, dead letter queue, suppression</span></div>
-          <div><span class="rk">mine       </span><span class="rv">enrichment integrations</span></div>
-        </div>
-        <p style="margin:.9rem 0 0;color:var(--ink-2);font-size:.95rem">Nineteen tables with row level security, seventy policies, eighteen privileged functions pinned to an empty search path. The interesting review question is not whether a model wrote the components. It is whether anyone decided what happens when the email provider is down.</p>
+    <div class="lab rise">
+      <div class="rc-bar">
+        <span class="fk-aud-lbl">Audience</span>
+        <div class="picker" id="oohSegPicker"></div>
       </div>
+      <div class="lab-grid">
+        <div class="lab-stage" style="align-items:stretch">
+          <div class="ooh-grid" id="oohGrid"></div>
+        </div>
+        <div class="lab-side">
+          <div class="spu-head">
+            <span class="spu-big" id="oohBig">0</span>
+            <span class="auc-unit">composite score</span>
+          </div>
+          <div class="cr-meta" id="oohMeta" style="margin-top:.5rem"></div>
+          <h5 style="margin:1rem 0 .3rem">Factors and their weights</h5>
+          <div class="ooh-facts" id="oohFacts"></div>
+          <div class="readout" id="oohRead"></div>
+        </div>
+      </div>
+      <div class="lab-cap">The scoring factors are the real ones, taken from the schema: audience affinity, place density, traffic pressure, congestion and magnet pull, stored uniquely per location and audience segment alongside the venues driving the pull. The six sites here and their values are invented, and so are the segment weights, but every composite, ranking and cost-per-point on this page is computed live from them. Enrichment in the real tool comes from third-party place, traffic and event APIs, cached in the database so the same site is not paid for twice.</div>
+    </div>
+
+    <div class="col">
+      <h3 class="rise" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.03em;margin:3rem 0 .5rem">The same idea, pointed at whitespace</h3>
+      <p class="rise">The second is a sibling of the first, built for a different question. Rather than scoring sites you already run, it holds the available inventory in a market as bookable stock: typed by format, tracked by whether it is available, booked or under maintenance, attached to campaigns with their assets, and enriched with what surrounds each site.</p>
+      <p class="rise">The layer that makes it worth using is beside the inventory rather than in it. <strong>Your own stores and your competitors' stores sit on the same map</strong>, so the question a planner asks stops being which billboard is free and becomes which free billboard is close to one of my restaurants and far from one of theirs. That is a whitespace question, and it is the same shape as the very first model I ever built at Salesdash, which is not a coincidence I noticed until I wrote this page.</p>
+      <p class="rise">It also has the thing every internal tool eventually needs and nobody enjoys building: an approval queue. New accounts land in a pending state and an administrator grants a role, because a tool holding a client's media plan should not be self-service.</p>
+
+      <h3 class="rise" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.03em;margin:3rem 0 .5rem">A CRM is a different category of thing</h3>
+      <p class="rise">The third is a lead manager for a property developer. Enquiries arrive from social ads, get assigned to one of the sales team, and move through a pipeline from new to contacted to qualified to won or lost, with follow-ups and an activity trail against each one, and automated messages triggered along the way.</p>
+      <p class="rise">This is the one that taught me something, because a dashboard holds numbers and this holds people's names and phone numbers. Three decisions in it are mine and none of them were things I was asked for.</p>
+      <p class="rise"><strong>Personal data is encrypted at rest, not merely access-controlled.</strong> Names and contact details are encrypted on write, decryption is a privileged function explicitly revoked from anonymous access, and the application reads through views rather than touching the columns. A leaked read-only credential yields ciphertext instead of a contact list worth selling.</p>
+      <p class="rise"><strong>Email goes through a queue with a dead letter queue behind it.</strong> Sending inline from a request handler works right up until the provider is slow, and then it fails quietly and nobody can say which leads were never contacted. And a suppression list of unsubscribes, bounces and complaints is checked before anything is queued, because the fastest way to lose a sending domain is to keep mailing people who asked you to stop.</p>
+      <p class="rise">Step through it below, then break it. The failure paths are the point.</p>
+    </div>
+
+    <div class="lab rise">
+      <div class="rc-bar">
+        <span class="fk-aud-lbl">Conditions</span>
+        <div class="picker" id="lqPicker"></div>
+      </div>
+      <div class="lab-grid">
+        <div class="lab-stage" style="align-items:stretch">
+          <div class="li-flow" id="lqFlow"></div>
+          <div class="picker" style="margin-top:.7rem;justify-content:center">
+            <button type="button" id="lqStep" style="min-width:auto">step</button>
+          </div>
+        </div>
+        <div class="lab-side">
+          <h5 id="lqTitle">Lead captured</h5>
+          <p id="lqBody" style="margin-top:0"></p>
+          <pre class="li-json" id="lqJson"></pre>
+          <div class="readout" id="lqRead"></div>
+        </div>
+      </div>
+      <div class="lab-cap">The sequence and the guards are the real ones: encryption on write with decryption revoked from anonymous access, row level security deciding which rows a rep sees, a suppression check ahead of the queue, and a dead letter queue written to before the source message is deleted so a crash between the two duplicates rather than loses. Payloads and names here are invented. Across the three applications: nineteen tables with row level security, seventy policies, and eighteen privileged functions pinned to an empty search path.</div>
     </div>
 
     <div class="col">
@@ -3411,6 +3488,226 @@ if(ganSvg){
     ganPicker.appendChild(b);
   });
   ganPaint();
+}
+
+/* ═══ WORK WIDGET — scoring an OOH site ═════════════════
+   The factors, the per-segment scoring and the magnet list
+   are the real schema: audience_affinity, place_density,
+   traffic_pressure, congestion, magnet_pull and top_magnets,
+   unique per (location, segment). Sites and values here are
+   invented; the composite is computed live from the weights. */
+var oohGrid=document.getElementById("oohGrid");
+if(oohGrid){
+  var OOH_SEG=[
+   {id:"men_20_29",  n:"men 20-29",  w:{aff:0.34,den:0.18,traf:0.22,cong:-0.10,mag:0.26}},
+   {id:"women_20_29",n:"women 20-29",w:{aff:0.36,den:0.24,traf:0.14,cong:-0.08,mag:0.26}},
+   {id:"families",   n:"families",   w:{aff:0.28,den:0.30,traf:0.10,cong:-0.16,mag:0.32}},
+   {id:"commuters",  n:"commuters",  w:{aff:0.18,den:0.10,traf:0.42,cong:0.06,mag:0.16}}
+  ];
+  var OOH_SITES=[
+   {id:"loc-4412", fmt:"unipol",    city:"Riyadh", lit:1, price:14200,
+    aff:{men_20_29:78,women_20_29:71,families:52,commuters:64}, den:66, traf:81, cong:0.72, mag:74,
+    magnets:["stadium","food court","transit stop"]},
+   {id:"loc-4380", fmt:"digital",   city:"Riyadh", lit:1, price:26500,
+    aff:{men_20_29:69,women_20_29:84,families:77,commuters:41}, den:88, traf:47, cong:0.38, mag:86,
+    magnets:["mall entrance","cinema","cafe cluster"]},
+   {id:"loc-4291", fmt:"billboard", city:"Jeddah", lit:0, price:9100,
+    aff:{men_20_29:54,women_20_29:38,families:31,commuters:79}, den:22, traf:92, cong:0.88, mag:29,
+    magnets:["ring road"]},
+   {id:"loc-4155", fmt:"mupi",      city:"Jeddah", lit:1, price:6400,
+    aff:{men_20_29:61,women_20_29:66,families:70,commuters:35}, den:74, traf:38, cong:0.29, mag:68,
+    magnets:["supermarket","school","pharmacy"]},
+   {id:"loc-4098", fmt:"wall wrap", city:"Dubai",  lit:0, price:18800,
+    aff:{men_20_29:72,women_20_29:59,families:44,commuters:58}, den:47, traf:69, cong:0.61, mag:51,
+    magnets:["gym","car park"]},
+   {id:"loc-4021", fmt:"rooftop",   city:"Dubai",  lit:1, price:31000,
+    aff:{men_20_29:66,women_20_29:63,families:58,commuters:74}, den:58, traf:86, cong:0.79, mag:62,
+    magnets:["metro interchange","office towers"]}
+  ];
+  var OOH_FACT=[["audience affinity","aff"],["place density","den"],
+                ["traffic pressure","traf"],["congestion","cong"],["magnet pull","mag"]];
+  var oohSeg=0, oohAt=1;
+
+  var oohVal=function(s,k){
+    if(k==="aff") return s.aff[OOH_SEG[oohSeg].id];
+    if(k==="cong") return Math.round(s.cong*100);
+    return s[k];
+  };
+  var oohScore=function(s){
+    var w=OOH_SEG[oohSeg].w, t=0, wsum=0;
+    OOH_FACT.forEach(function(f){
+      var ww=w[f[1]];
+      t+=oohVal(s,f[1])*ww; wsum+=Math.abs(ww);
+    });
+    return Math.max(0,Math.min(100,Math.round(t/wsum*1.0)));
+  };
+
+  var oohMeta=document.getElementById("oohMeta");
+  var oohFacts=document.getElementById("oohFacts");
+  var oohRead=document.getElementById("oohRead");
+  var oohBig=document.getElementById("oohBig");
+  var oohSegP=document.getElementById("oohSegPicker");
+
+  var oohPaint=function(){
+    var ranked=OOH_SITES.slice().sort(function(a,b){ return oohScore(b)-oohScore(a); });
+    oohGrid.innerHTML="";
+    OOH_SITES.forEach(function(s,i){
+      var sc=oohScore(s), rank=ranked.indexOf(s)+1;
+      var b=document.createElement("button");
+      b.type="button";
+      b.className="ooh-cell"+(i===oohAt?" on":"");
+      b.innerHTML='<span class="ooh-sc"></span><span class="ooh-id"></span>'
+                 +'<span class="ooh-fmt"></span><span class="ooh-rk"></span>';
+      b.querySelector(".ooh-sc").textContent=sc;
+      b.querySelector(".ooh-id").textContent=s.id;
+      b.querySelector(".ooh-fmt").textContent=s.fmt+(s.lit?" · lit":" · unlit");
+      b.querySelector(".ooh-rk").textContent="#"+rank;
+      b.addEventListener("click",function(){ oohAt=i; oohPaint(); });
+      oohGrid.appendChild(b);
+    });
+    var s=OOH_SITES[oohAt], sc=oohScore(s);
+    oohBig.textContent=sc;
+    oohMeta.innerHTML='<span>'+s.city+'</span><span>'+s.fmt+'</span>'
+      +'<span>'+(s.lit?"lit at night":"not lit")+'</span>'
+      +'<span>$'+s.price.toLocaleString()+'</span>';
+    oohFacts.innerHTML="";
+    var w=OOH_SEG[oohSeg].w;
+    OOH_FACT.forEach(function(f){
+      var v=oohVal(s,f[1]), ww=w[f[1]];
+      var row=document.createElement("div");
+      row.className="ooh-row";
+      row.innerHTML='<span class="ooh-f"></span><span class="ooh-bar"><i></i></span>'
+                   +'<span class="ooh-v"></span><span class="ooh-w"></span>';
+      row.querySelector(".ooh-f").textContent=f[0];
+      row.querySelector(".ooh-v").textContent=v;
+      row.querySelector(".ooh-w").textContent=(ww>0?"+":"")+ww.toFixed(2);
+      var bar=row.querySelector(".ooh-bar i");
+      if(ww<0) bar.classList.add("neg");
+      oohFacts.appendChild(row);
+      requestAnimationFrame(function(){ bar.style.width=v+"%"; });
+    });
+    oohRead.innerHTML=
+       '<div><span class="rk">segment  </span><span class="rv">'+OOH_SEG[oohSeg].id+'</span></div>'
+      +'<div><span class="rk">magnets  </span><span class="rv">'+s.magnets.join(", ")+'</span></div>'
+      +'<div><span class="rk">cost/pt  </span><span class="rv">$'+Math.round(s.price/Math.max(sc,1)).toLocaleString()+'</span></div>'
+      +'<div><span class="rk">rank     </span><span class="rv">'+(ranked.indexOf(s)+1)+' of '+OOH_SITES.length+' for this segment</span></div>';
+    Array.prototype.forEach.call(oohSegP.children,function(b,k){
+      b.setAttribute("aria-pressed", k===oohSeg?"true":"false"); });
+  };
+  OOH_SEG.forEach(function(sg,i){
+    var b=document.createElement("button");
+    b.type="button"; b.textContent=sg.n; b.style.minWidth="auto";
+    b.addEventListener("click",function(){ oohSeg=i; oohPaint(); });
+    oohSegP.appendChild(b);
+  });
+  oohPaint();
+}
+
+/* ═══ WORK WIDGET — the lead pipeline, and its failure ══
+   Mirrors the schema: encrypted insert, role-scoped assign,
+   a suppression check before any send, an enqueue, and a dead
+   letter queue for anything that will not go. Names invented,
+   sequence and guards from the migrations.                    */
+var lqFlow=document.getElementById("lqFlow");
+if(lqFlow){
+  var LQ_STEPS=[
+   {k:"arrive",  t:"lead captured from a social ad"},
+   {k:"encrypt", t:"name and phone encrypted on write"},
+   {k:"assign",  t:"routed to a sales rep by role"},
+   {k:"suppress",t:"suppression list checked"},
+   {k:"enqueue", t:"welcome email queued"},
+   {k:"send",    t:"provider called"},
+   {k:"settle",  t:"delivered, or moved aside"}
+  ];
+  var lqAt=0, lqMode=0;   /* 0 healthy, 1 provider down, 2 suppressed */
+  var lqFlowEl=lqFlow;
+  var lqJson=document.getElementById("lqJson");
+  var lqTitle=document.getElementById("lqTitle");
+  var lqBody=document.getElementById("lqBody");
+  var lqRead=document.getElementById("lqRead");
+  var lqPicker=document.getElementById("lqPicker");
+
+  var LQ_TEXT={
+   arrive:["Lead captured","An enquiry arrives from a social ad with a name, a phone number and an interest. Nothing about it is trustworthy yet and all of it is personal data.",
+     '{\n  "source": "social_ad",\n  "name": "…",\n  "phone": "…",\n  "status": "new"\n}'],
+   encrypt:["Encrypted on write","The name and phone go through symmetric encryption before they land in a column. Decryption is a privileged function that anonymous access is revoked from, so a leaked read-only key returns ciphertext rather than a contact list.",
+     '{\n  "name_enc": "\\\\x c30d0409...",\n  "phone_enc": "\\\\x c30d0409...",\n  "decrypt": "authenticated only"\n}'],
+   assign:["Assigned by role","The lead is routed to one of the sales team. Which rows a rep can see is decided by a row level security policy, not by the interface, and the role check runs through a privileged helper so it does not trip the policy on the roles table itself.",
+     '{\n  "assigned_to": "rep_3",\n  "policy": "sales sees own leads",\n  "admin_override": true\n}'],
+   suppress:["Suppression checked","Before any send, the address is checked against a list of unsubscribes, bounces and complaints. This is the step that keeps a sending domain alive, and it has to sit before the queue rather than inside the sender.",
+     '{\n  "suppressed": false,\n  "reasons": [],\n  "proceed": true\n}'],
+   enqueue:["Queued, not sent","The email is enqueued rather than sent inline from the request. A request handler that calls a mail provider directly is a request handler that hangs when the provider is slow, and silently loses the message when it times out.",
+     '{\n  "queue": "email_outbound",\n  "msg_id": 81143,\n  "state": "pending"\n}'],
+   send:["Provider called","A worker reads the queue in batches and calls the provider. Success deletes the message. Failure does not.",
+     '{\n  "attempt": 1,\n  "provider": "…",\n  "result": "250 ok"\n}'],
+   settle:["Settled","Delivered, logged against the lead, and the message removed from the queue.",
+     '{\n  "delivered": true,\n  "logged_to": "email_send_log",\n  "queue_depth": 0\n}']
+  };
+
+  var lqPaint=function(i){
+    lqAt=i;
+    var st=LQ_STEPS[i], key=st.k;
+    var title, body, json, bad=false;
+    if(lqMode===2 && key==="suppress"){
+      title="Suppressed"; bad=true;
+      body="This address unsubscribed three weeks ago. The send never happens, the lead stays in the pipeline, and the rep sees that email is not an available channel for this person. Suppression is not an error, it is a state.";
+      json='{\n  "suppressed": true,\n  "reason": "unsubscribed",\n  "since": "2026-08-14",\n  "proceed": false\n}';
+    }else if(lqMode===2 && (key==="enqueue"||key==="send")){
+      title="Skipped"; bad=true;
+      body="Nothing was queued, so there is nothing to send. The pipeline short-circuits rather than enqueueing a message that would be discarded later, which keeps the queue depth honest.";
+      json='{\n  "queued": false,\n  "skipped": "suppressed_email"\n}';
+    }else if(lqMode===1 && key==="send"){
+      title="Provider down"; bad=true;
+      body="The provider is not answering. The message is not lost and it is not retried forever either: attempts are counted, and this is where an inline send would have simply dropped it with a 200 on the form submission.";
+      json='{\n  "attempt": 3,\n  "error": "upstream timeout",\n  "will_retry": false\n}';
+    }else if(lqMode===1 && key==="settle"){
+      title="Dead letter queue"; bad=true;
+      body="After the attempt budget is spent the message is moved to a dead letter queue: written to the DLQ first, then deleted from the source queue, in that order, so a crash between the two duplicates a message rather than losing it. Someone can look at the DLQ on Monday and know exactly which leads were never contacted.";
+      json='{\n  "moved_to": "email_outbound_dlq",\n  "order": ["send_to_dlq", "delete_from_source"],\n  "lead_contacted": false,\n  "visible": true\n}';
+    }else{
+      var t=LQ_TEXT[key]; title=t[0]; body=t[1]; json=t[2];
+    }
+    lqTitle.textContent=title; lqBody.textContent=body; lqJson.textContent=json;
+    var queued=i>=4 && lqMode!==2, dlq=lqMode===1 && i>=6;
+    lqRead.innerHTML=
+       '<div><span class="rk">step      </span><span class="rv">'+(i+1)+' of '+LQ_STEPS.length+'</span></div>'
+      +'<div><span class="rk">pii       </span><span class="rv">'+(i>=1?"encrypted":"in flight")+'</span></div>'
+      +'<div><span class="rk">queue     </span><span class="rv">'+(dlq?"0":(queued&&i<6?"1":"0"))+'</span></div>'
+      +'<div><span class="rk">dlq       </span><span class="rv">'+(dlq?"1":"0")+'</span></div>';
+    Array.prototype.forEach.call(lqFlowEl.children,function(el,k){
+      el.classList.toggle("on",k===i);
+      el.classList.toggle("done",k<i);
+      el.classList.toggle("bad", bad && k===i);
+    });
+  };
+  var lqBuild=function(){
+    lqFlowEl.innerHTML="";
+    LQ_STEPS.forEach(function(st,i){
+      var d=document.createElement("button");
+      d.type="button"; d.className="li-node";
+      d.innerHTML='<span class="li-dot"></span><span class="li-k"></span><span class="li-t"></span>';
+      d.querySelector(".li-k").textContent=st.k;
+      d.querySelector(".li-t").textContent=st.t;
+      d.addEventListener("click",function(){ lqPaint(i); });
+      lqFlowEl.appendChild(d);
+    });
+    lqPaint(0);
+  };
+  ["healthy","provider down","suppressed"].forEach(function(lbl,i){
+    var b=document.createElement("button");
+    b.type="button"; b.textContent=lbl; b.style.minWidth="auto";
+    b.setAttribute("aria-pressed", i===0?"true":"false");
+    b.addEventListener("click",function(){
+      lqMode=i;
+      Array.prototype.forEach.call(lqPicker.children,function(x,k){
+        x.setAttribute("aria-pressed", k===i?"true":"false"); });
+      lqPaint(lqAt);
+    });
+    lqPicker.appendChild(b);
+  });
+  lqBuild();
+  var lqStep=document.getElementById("lqStep");
+  if(lqStep) lqStep.addEventListener("click",function(){ lqPaint((lqAt+1)%LQ_STEPS.length); });
 }
 
 /* ── scroll reveals ─────────────────────────────────────── */
