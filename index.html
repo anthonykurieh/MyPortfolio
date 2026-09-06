@@ -1326,6 +1326,32 @@ footer .big em{font-style:normal;color:var(--signal)}
     </div>
 
     <div class="col">
+      <h3 class="rise" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.03em;margin:3rem 0 .5rem">Two apps I shipped with an AI builder, and the parts it could not do</h3>
+      <p class="rise">Both of these were built in <strong>Lovable</strong>, and I want that said at the top rather than discovered in a repo. You describe the application you want, it writes React and TypeScript against a Postgres backend, and you iterate by talking to it. For a working tool that has to exist next month, that is a completely reasonable way to start, and pretending otherwise would be posturing.</p>
+      <p class="rise">What it does not do is make the decisions that determine whether the thing is safe to put real data in. That part is still yours, and it is where both of these projects actually went.</p>
+      <p class="rise">The first is an <strong>out-of-home planning tool</strong>: billboards, digital screens, lamp posts and wall wraps as inventory you can filter, map and attach to a campaign. Screens are typed and status-tracked, so a planner can see what is available rather than booked, and each site gets enriched from third-party location data with what is actually around it. The useful part is the layer beside it. Your own stores and your competitors' stores sit on the same map as the inventory, so the question stops being which billboard is available and becomes which billboard is near my restaurant and not near theirs.</p>
+      <p class="rise">The second is a <strong>lead manager for a property developer</strong>. Enquiries arrive from social ads, land in the database, get assigned to one of the sales team, and move through a pipeline from new to contacted to qualified to won or lost, with follow-ups and an activity trail against each one. An admin sets roles and sees who is converting.</p>
+      <p class="rise">That second one is the one that taught me something, because a CRM holding real people's names and phone numbers is a different category of thing from a dashboard. Three decisions in it are mine and none of them were prompted for.</p>
+      <p class="rise"><strong>Personal data is encrypted at rest in the database</strong>, not merely access-controlled. Names and contact details go through symmetric encryption on write, decryption is a privileged function that anonymous users are explicitly revoked from, and the application reads through views rather than touching the columns. It means a leaked read-only credential yields ciphertext.</p>
+      <p class="rise"><strong>Email goes through a real queue with a dead letter queue behind it.</strong> Sending an email inline from a request handler works until a provider is slow, and then it fails silently and nobody knows which leads never got contacted. Messages are enqueued, read in batches, and anything that fails repeatedly is moved aside rather than retried forever or dropped. Unsubscribes, bounces and complaints are recorded in a suppression list that every send checks first, because the fastest way to lose a sending domain is to keep mailing people who asked you not to.</p>
+      <p class="rise"><strong>Access control is enforced in the database, not in the interface.</strong> Nineteen tables have row level security on, with roles resolved through a privileged helper so that checking whether you are an admin does not itself trip the policy that decides whether you can read the roles table. That recursion is the standard trap and it is worth knowing about before you hit it.</p>
+    </div>
+
+    <div class="card rise" style="margin-top:1.6rem;max-width:660px">
+      <div class="card-head"><span class="dot"></span> What the builder generated, and what it did not</div>
+      <div class="card-body">
+        <div class="readout" style="margin-top:0">
+          <div><span class="rk">generated  </span><span class="rv">React, TypeScript, routing, UI</span></div>
+          <div><span class="rk">mine       </span><span class="rv">schema, roles, RLS policies</span></div>
+          <div><span class="rk">mine       </span><span class="rv">PII encryption and key handling</span></div>
+          <div><span class="rk">mine       </span><span class="rv">queue, dead letter queue, suppression</span></div>
+          <div><span class="rk">mine       </span><span class="rv">enrichment integrations</span></div>
+        </div>
+        <p style="margin:.9rem 0 0;color:var(--ink-2);font-size:.95rem">Nineteen tables with row level security, seventy policies, eighteen privileged functions pinned to an empty search path. The interesting review question is not whether a model wrote the components. It is whether anyone decided what happens when the email provider is down.</p>
+      </div>
+    </div>
+
+    <div class="col">
       <h3 class="rise" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.03em;margin:3rem 0 .5rem">Asking the warehouse a question in English</h3>
       <p class="rise">Every question about performance used to pass through someone who could write SQL, and that someone was usually me. A planner who needed one number waited a day for it, and I spent the day writing queries instead of building things.</p>
       <p class="rise">So the question became the interface. Plain language goes in, a model plans a query against a documented catalogue of tables, the plan gets checked before anything is allowed to run, and the answer comes back with a chart. The catalogue is the part that actually matters: every table written down with what it means and which kinds of question it is allowed to answer. Two brands run the same skeleton and only the catalogue differs.</p>

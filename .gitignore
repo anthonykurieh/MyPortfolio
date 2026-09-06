@@ -8,3 +8,7 @@ CLAUDE.md
 *.zip
 
 .DS_Store
+
+# Third-party project env files, should any land here
+.env
+.env.*
