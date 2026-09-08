@@ -17,6 +17,44 @@
 <meta name="description" content="Anthony Kurieh — Data &amp; AI Engineer at Choreograph (WPP) in Dubai. BigQuery pipelines, GCP services and LLM applications for enterprise brands across MENA.">
 <meta name="theme-color" content="#041B1F">
 
+<link rel="icon" href="data:image/svg%2Bxml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23041B1F'/%3E%3Ccircle cx='20' cy='32' r='7' fill='%23E9C46A'/%3E%3Cpath d='M34 44 L41 20 L48 44' stroke='%234FE0C1' stroke-width='5.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="og.png">
+
+<!-- Open Graph. Without these, sharing the link anywhere shows a bare URL. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Anthony Kurieh">
+<meta property="og:title" content="Anthony Kurieh — Data &amp; AI Engineer">
+<meta property="og:description" content="Fifteen things I built, each one interactive, each one honest about which of its numbers are measured. Computer vision, LLM applications and data infrastructure.">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Anthony Kurieh. Data that survives contact with reality.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anthony Kurieh — Data &amp; AI Engineer">
+<meta name="twitter:description" content="Fifteen things I built, each one interactive, each one honest about which of its numbers are measured.">
+<meta name="twitter:image" content="og.png">
+<meta name="author" content="Anthony Kurieh">
+<meta name="robots" content="index, follow">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Anthony Kurieh",
+  "alternateName": "Anthony Aziz Kurieh",
+  "jobTitle": "Data Analyst, AI & Automation",
+  "worksFor": { "@type": "Organization", "name": "Choreograph" },
+  "email": "anthony.kurieh@outlook.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Lebanese American University" },
+  "knowsAbout": ["Machine Learning", "Computer Vision", "LLM Applications", "BigQuery", "Data Engineering"],
+  "sameAs": [
+    "https://www.linkedin.com/in/anthony-kurieh",
+    "https://github.com/anthonykurieh"
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -420,46 +458,6 @@ footer .big em{font-style:normal;color:var(--signal)}
 .readout>div{display:flex;justify-content:space-between;gap:.8rem}
 .rk{color:var(--ink-3);white-space:pre}
 .rv{color:var(--signal);font-weight:700;text-align:right}
-
-/* OCR bench */
-.ocr-sample{
-  font-family:"JetBrains Mono",monospace;font-weight:700;width:100%;text-align:center;
-  font-size:clamp(1rem,3.6vw,1.45rem);letter-spacing:.1em;color:var(--ink);
-  padding:.9rem 1rem;border:1px dashed var(--line);border-radius:8px;background:var(--void);
-  transition:filter .3s ease,opacity .3s ease;
-}
-.slider{
-  -webkit-appearance:none;appearance:none;width:100%;max-width:300px;height:2px;
-  background:var(--line);border-radius:2px;outline:none;cursor:pointer;margin-top:.5rem;
-}
-.slider::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:var(--signal);border:0;cursor:pointer}
-.slider::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--signal);border:0;cursor:pointer}
-.slider:focus-visible{outline:2px solid var(--signal);outline-offset:5px}
-.engines{display:grid;gap:.45rem}
-.eng{border:1px solid var(--line-soft);border-radius:8px;padding:.5rem .6rem;background:var(--void)}
-.eng .en{
-  display:flex;justify-content:space-between;align-items:baseline;gap:.7rem;margin-bottom:.28rem;
-  font-family:"JetBrains Mono",monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
-}
-.eng .en b{font-size:.8rem;letter-spacing:0;color:var(--signal)}
-.eng .out{font-family:"JetBrains Mono",monospace;font-size:.8rem;letter-spacing:.04em;color:var(--ink-2);word-break:break-all}
-.eng .out i{font-style:normal;color:var(--gold);font-weight:700}
-
-/* LTAS ring nodes */
-.ltas-node{cursor:pointer}
-.ltas-node .ring{
-  fill:var(--surface);stroke:var(--line);stroke-width:1.5;
-  transition:fill .25s ease,stroke .25s ease;
-}
-.ltas-node text{
-  font-family:"JetBrains Mono",monospace;font-size:8.5px;font-weight:700;
-  letter-spacing:.12em;fill:var(--ink-3);text-anchor:middle;
-  pointer-events:none;transition:fill .25s ease;
-}
-.ltas-node:hover .ring{stroke:var(--signal)}
-.ltas-node:hover text{fill:var(--ink-2)}
-.ltas-node.on .ring{stroke:var(--signal);fill:color-mix(in oklab,var(--signal) 16%,var(--surface))}
-.ltas-node.on text{fill:var(--signal)}
 
 /* LTAS provider pills + dossier stack chips */
 .prov,.dsr-foot .chip{font-family:"JetBrains Mono",monospace}
@@ -1038,27 +1036,6 @@ footer .big em{font-style:normal;color:var(--signal)}
     </div>
 
     <!-- OCR -->
-    <div class="col"><h3 class="rise" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.03em;margin:3rem 0 .5rem">The OCR bench</h3>
-    <p class="rise">Character recognition again, approached from the other end. The models were the assignment; the thing I got right was the harness around them. It ran several recognisers against the same input at once and showed exactly where each one broke, character by character, instead of reporting one score per model and leaving you to guess.</p>
-    <p class="rise"><strong>An aggregate accuracy tells you almost nothing about a recogniser.</strong> Two engines sitting at the same percentage can be wrong in completely different places, and one of those failure patterns might be survivable while the other is not. Watching them fail on the same character is what separates them, and the failures are never random: it is always the confusable pairs, 1 against I, 5 against S, 8 against B.</p>
-    <p class="rise">Drag the slider to degrade the scan and watch where each engine gives out.</p></div>
-
-    <div class="lab rise">
-      <div class="lab-grid">
-        <div class="lab-stage">
-          <div class="ocr-sample"><span id="ocrSample">SHIPMENT 4471-B</span></div>
-          <input class="slider" id="ocrSlider" type="range" min="0" max="3" step="1" value="0" aria-label="Scan degradation">
-          <div class="mono" id="ocrLevel" style="font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-top:.5rem"></div>
-        </div>
-        <div class="lab-side">
-          <h5>Engine comparison</h5>
-          <div class="engines" id="ocrEngines"></div>
-          <p style="margin-top:.85rem;margin-bottom:0">Character accuracy is computed against ground truth on every frame. The failures that matter are the confusable pairs: 1 against I, 5 against S, 8 against B.</p>
-        </div>
-      </div>
-      <div class="lab-cap">A recreation of the harness idea rather than the original tool. The degradation, the per-character diffing and the accuracy recomputation are real and run live on every frame, but the three engines here are stand-ins. The specific recognisers that were compared, and the accuracy they reached, are not something I can still verify, so nothing on this page claims a number for them.</div>
-    </div>
-
     <!-- Material estimation -->
     <div class="col"><h3 class="rise" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.03em;margin:3rem 0 .5rem">Image-based material estimation <span class="mono" style="font-size:.58rem;letter-spacing:.13em;color:var(--gold);vertical-align:middle;border:1px solid color-mix(in oklab,var(--gold) 45%,transparent);border-radius:99px;padding:.16rem .45rem">PUBLISHED</span></h3>
     <p class="rise">A quadruped robot choosing where to put a foot needs to know whether the surface will hold before it commits weight to it. This was a convolutional network predicting material class and friction behaviour from an image alone, built for the quadruped the lab was developing.</p>
@@ -1847,41 +1824,6 @@ if(aslSvg){
     picker.appendChild(b);
   });
   paint(0);
-}
-
-/* ═══ LAB WIDGET 2 — OCR bench ══════════════════════════ */
-var TRUTH="SHIPMENT 4471-B";
-var OCR=[
- {lvl:"clean scan",   blur:0,   out:["SHIPMENT 4471-B","SHIPMENT 4471-B","SHIPMENT 4471-B"]},
- {lvl:"light noise",  blur:.7,  out:["SHIPMENT 4471-B","SHIPMENT 447I-B","SHIPMENT 4471-8"]},
- {lvl:"heavy noise",  blur:1.5, out:["SHIPMENT 4471-8","SHlPMENT 447I-B","5HIPMENT 4471-8"]},
- {lvl:"degraded fax", blur:2.6, out:["SHIPMENT 447I-8","SHlPMENT 4A7I-8","5H1PMENT 44Z1-8"]}
-];
-var ENGN=["Engine A","Engine B","Custom model"];
-var ocrS=document.getElementById("ocrSlider");
-if(ocrS){
-  var sample=document.getElementById("ocrSample"), lvlEl=document.getElementById("ocrLevel"),
-      engBox=document.getElementById("ocrEngines");
-  var renderOcr=function(){
-    var st=OCR[+ocrS.value];
-    sample.style.filter="blur("+st.blur+"px)";
-    sample.style.opacity=String(1-st.blur*0.09);
-    lvlEl.textContent=st.lvl;
-    engBox.innerHTML="";
-    st.out.forEach(function(txt,i){
-      var right=0,marked="";
-      for(var c=0;c<TRUTH.length;c++){
-        var ch=txt[c]||"?";
-        if(ch===TRUTH[c]){right++;marked+=(ch===" "?"&nbsp;":ch);}
-        else marked+="<i>"+(ch===" "?"&nbsp;":ch)+"</i>";
-      }
-      var acc=Math.round(right/TRUTH.length*100);
-      var d=document.createElement("div");d.className="eng";
-      d.innerHTML='<div class="en"><span>'+ENGN[i]+'</span><b>'+acc+'%</b></div><div class="out">'+marked+'</div>';
-      engBox.appendChild(d);
-    });
-  };
-  ocrS.addEventListener("input",renderOcr); renderOcr();
 }
 
 /* ═══ LAB WIDGET 3 — CNN pipeline ═══════════════════════ */
