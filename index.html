@@ -1140,12 +1140,6 @@ footer .big em{font-style:normal;color:var(--signal)}
       <div class="lab-cap">The hashes are real SHA-256, computed in your browser over the block contents, and the double-vote rule is the one from the contract. There is no network here: a live version needs a wallet and a deployed contract, so this runs the same logic against a local chain.</div>
     </div>
 
-    <!-- XML differencing tool -->
-    <div class="col"><h3 class="rise" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.03em;margin:3rem 0 .5rem">How different are two documents, exactly?</h3>
-    <p class="rise">Given two XML files, do not tell me that they differ. Tell me by how much, and hand me the shortest list of edits that turns the first into the second. That is a harder question than it sounds, because a document is a tree, and comparing trees line by line is meaningless when a single moved parent shifts everything beneath it.</p>
-    <p class="rise">We parsed each document into a rooted ordered labelled tree, then implemented the Nierman and Jagadish tree edit distance: build a cost matrix over the two node sets, take the cheapest of insert, delete or update at every cell, and recurse into subtrees for the update cost. Similarity falls out as <span class="mono" style="font-size:.85em">1 / (1 + TED)</span>. Walking back through the matrix from the bottom right recovers the edit script, and applying that script to the first tree patches it into the second.</p>
-    <p class="rise">The part I would defend hardest is that it compares structure and not content. <strong>Two documents saying opposite things in the same shape are identical to this tool, and that is correct behaviour, not a limitation.</strong> Written up as a paper with Marc Bejjani and Nizar Masry, in Python on ElementTree.</p></div>
-
   </section>
 
 
@@ -1337,9 +1331,8 @@ footer .big em{font-style:normal;color:var(--signal)}
     </div>
 
     <div class="col">
-      <h3 class="rise" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.03em;margin:3rem 0 .5rem">Three applications, built with an AI builder</h3>
-      <p class="rise">These three were built in <strong>Lovable</strong>, and I would rather say that at the top than have it discovered in a repository. You describe the application you want, it writes React and TypeScript against a Postgres backend, and you iterate by talking to it. For an internal tool that has to exist next month, that is a reasonable way to start, and pretending otherwise would be posturing.</p>
-      <p class="rise">What it does not do is make the decisions that determine whether the thing is safe to put real data in, or whether the numbers it shows mean anything. That part is still yours, and it is the part each of these write-ups is about.</p>
+      <h3 class="rise" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.03em;margin:3rem 0 .5rem">Three applications, shipped</h3>
+      <p class="rise">Three internal tools, all React and TypeScript over a Postgres backend, each built to a deadline rather than to a specification. The interesting part of every one of them was never the interface. It was the set of decisions that determine whether a thing is safe to put real data in, and whether the numbers it shows mean anything, and that is what each of these write-ups is about.</p>
 
       <h3 class="rise" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.03em;margin:2.6rem 0 .5rem">Scoring a billboard for a specific audience</h3>
       <p class="rise">The first is an out-of-home mapper: every poster, screen, mupi and wall wrap a brand runs, placed on a map by latitude and longitude, tagged with format, media owner, price, campaign dates and the year it ran. That last field is what makes it more than an inventory list, because with a year on every row you can put 2025 next to 2026, or your own sites next to a competitor's, and see how a market moved.</p>
@@ -1487,8 +1480,8 @@ footer .big em{font-style:normal;color:var(--signal)}
 
   <div class="act rise">
     <div class="n">Act III</div>
-    <h3>On my own time</h3>
-    <p>A master's degree taken in the evenings, a thesis, and the things nobody asked for at all. This is where I find out what I actually believe about building software.</p>
+    <h3>The deeper end</h3>
+    <p>A master's degree, a thesis, and the projects where I got to choose the problem. This is where I find out what I actually believe about building software.</p>
   </div>
 
   <!-- ─────────── THE MASTERS ─────────── -->
