@@ -18,7 +18,7 @@
   body{
     font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink);
     width:210mm; height:297mm; overflow:hidden;
-    font-size:8.6pt; line-height:1.42; font-weight:400;
+    font-size:8.5pt; line-height:1.41; font-weight:400;
   }
   a{ color:inherit; text-decoration:none }
 
@@ -39,22 +39,22 @@
   h2{
     font-weight:700; font-size:7.4pt; letter-spacing:.16em; text-transform:uppercase;
     color:var(--signal); border-bottom:.35mm solid var(--line-soft);
-    padding-bottom:.9mm; margin:2.8mm 0 1.7mm;
+    padding-bottom:.9mm; margin:2.6mm 0 1.6mm;
   }
-  .job{ margin-bottom:2mm }
+  .job{ margin-bottom:1.85mm }
   .jhead{ display:flex; justify-content:space-between; align-items:baseline; gap:4mm }
   .jtitle{ font-weight:600; font-size:9.4pt; letter-spacing:-.015em }
   .jtitle em{ font-style:normal; font-weight:400; color:var(--ink2) }
   .jwhen{ font-size:7.4pt; color:var(--ink3); white-space:nowrap; letter-spacing:.03em }
   ul{ list-style:none; margin-top:.9mm }
-  li{ padding-left:3.4mm; position:relative; margin-bottom:.7mm }
+  li{ padding-left:3.4mm; position:relative; margin-bottom:.68mm }
   li::before{
     content:""; position:absolute; left:.1mm; top:.52em;
     width:1.25mm; height:1.25mm; border-radius:50%; background:var(--signal); opacity:.6;
   }
   li b{ font-weight:600 }
 
-  .edu{ margin-bottom:1.9mm }
+  .edu{ margin-bottom:1.6mm }
   .edu .jhead{ margin-bottom:.3mm }
   .thin{ color:var(--ink2); font-size:8.4pt }
   .thin .mono{ font-size:8.2pt; color:var(--signal) }
@@ -89,12 +89,12 @@
     <div class="jwhen">Aug 2024 &ndash; present</div>
   </div>
   <ul>
-    <li><b>Shipped a conversational analytics product</b> used by two enterprise brand teams: plain-language questions are planned into SQL against a documented table catalogue, validated before execution, and answered with charts, replacing an analyst-in-the-loop for routine reporting questions.</li>
-    <li><b>Built a creative intelligence pipeline</b>: persists ad creatives from platform APIs to Cloud Storage before their CDN links expire, extracts metadata from images and video using computer vision and generative models, and joins creative features to performance to show which elements drive results.</li>
-    <li><b>Built an audience-targeted content rewriter</b> on GPT-4-turbo, taking platform, region, education level and age as inputs and scoring every rewrite against 25 computed readability metrics, logged per run.</li>
-    <li><b>Designed and shipped three internal web applications</b>: out-of-home site scoring per audience segment, competitive whitespace mapping, and a lead CRM, with row-level security across 19 tables, personal data encrypted at rest, and transactional email behind a queue with a dead-letter fallback.</li>
-    <li><b>Build and maintain 20 production dashboards</b> (Looker Studio, Power BI, Tableau, D3.js over BigQuery) tracking multi-million-dollar monthly media spend for 10+ enterprise brands, among them Amazon, Qatar Airways and Americana, across 7 MENA markets.</li>
-    <li><b>Developed 30+ automations</b> for ingestion, transformation, QA and KPI computation, cutting recurring reporting from multi-day manual effort to same-day turnaround.</li>
+    <li><b>Shipped a conversational analytics product</b> used by two enterprise brand teams: plain-language questions are planned into SQL against a documented table catalogue, validated before execution, and answered with charts, removing the analyst-in-the-loop for routine questions.</li>
+    <li><b>Built a creative intelligence pipeline</b>: persists ad creatives from platform APIs to Cloud Storage before their CDN links expire, extracts metadata from images and video using computer vision and generative models, and joins creative features to performance.</li>
+    <li><b>Built an audience-targeted content rewriter</b> on GPT-4-turbo, taking platform, region, education level and age as inputs and scoring every rewrite against 25 computed readability metrics, with 34 fields logged per run.</li>
+    <li><b>Designed and shipped three internal web applications</b>: out-of-home site scoring per audience segment, competitive whitespace mapping, and a lead CRM, with 70 row-level-security policies across 19 tables, personal data encrypted at rest, and email behind a queue with a dead-letter fallback.</li>
+    <li><b>Build and maintain 20 production dashboards</b> (Looker Studio, Power BI, Tableau, D3.js over BigQuery) tracking multi-million-dollar monthly spend across 9 media and attribution platforms, 10+ enterprise brands (Amazon, Qatar Airways, Americana) and 7 MENA markets.</li>
+    <li><b>Developed 30+ automations and pipelines</b>, processing millions of rows per dataset, for ingestion, transformation, QA and KPI computation, cutting recurring reporting from multi-day manual effort to same-day turnaround.</li>
     <li>Member of the internal <b>AI Committee</b>; ran the build-versus-buy evaluations behind the team&rsquo;s AI tooling standards.</li>
   </ul>
 </div>
@@ -127,7 +127,7 @@
     <div class="jwhen">Summer 2023 &middot; 12 weeks</div>
   </div>
   <ul>
-    <li>Extracted regions of interest from an event-driven vision sensor&rsquo;s <b>actionable signals</b> (projection histograms), iterating from naive thresholding to Gaussian-smoothed signals with box merging and padding.</li>
+    <li>Extracted regions of interest from an event-driven vision sensor&rsquo;s <b>actionable signals</b> (projection histograms), a sensor mode carrying ~20% of full-frame bandwidth, iterating from naive thresholding to Gaussian-smoothed signals with box merging and padding.</li>
     <li>Built the team&rsquo;s dataset tooling: annotated <b>3,960 frames</b> in CVAT to YOLO format, wrote the class converting any video into per-frame signal records with labels, and documented the codebase with Doxygen.</li>
   </ul>
 </div>
@@ -138,14 +138,14 @@
     <div class="jtitle">M.S. Applied Artificial Intelligence <em>&middot; Lebanese American University</em></div>
     <div class="jwhen">2025 &ndash; 2026</div>
   </div>
-  <div class="thin">Thesis: LIRION, a voice appointment-scheduling agent with a schema-bound LLM orchestration loop, bilingual EN/AR operation and event-sourced analytics. Code: <span class="mono">github.com/anthonykurieh/voice_facilitator</span></div>
+  <div class="thin">Thesis: LIRION, a voice appointment-scheduling agent with a schema-bound LLM orchestration loop, bilingual EN/AR operation and event-sourced analytics, evaluated across 29 live sessions, 177 turns and 3 provider stacks. Code: <span class="mono">github.com/anthonykurieh/voice_facilitator</span></div>
 </div>
 <div class="job edu">
   <div class="jhead">
     <div class="jtitle">B.E. Computer Engineering <em>&middot; Lebanese American University, Byblos</em></div>
     <div class="jwhen">2019 &ndash; 2023</div>
   </div>
-  <div class="thin">Published: <i>Towards Image-Based Material Estimation</i> (IEEE M2VIP) and the Robot Quadruped Materials Dataset (IEEE DataPort), from a CNN predicting surface material and friction for quadruped foot placement.</div>
+  <div class="thin">Published: <i>Towards Image-Based Material Estimation</i> (IEEE M2VIP) and the Robot Quadruped Materials Dataset (IEEE DataPort), from a CNN classifying surface material above 90% for quadruped foot placement.</div>
 </div>
 
 <h2>Skills &amp; Certificates</h2>
