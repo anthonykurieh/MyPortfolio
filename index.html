@@ -316,58 +316,6 @@ header.bar.stuck{border-bottom-color:var(--line-soft)}
 .rchips span{font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--ink-2);border:1px solid var(--line);border-radius:5px;padding:.22rem .48rem;transition:all .2s}
 .rchips span:hover{border-color:var(--signal);color:var(--ink)}
 
-/* ── project dossier ────────────────────────────────────── */
-.dossier{border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;background:var(--surface)}
-.dsr{border-bottom:1px solid var(--line-soft)}
-.dsr:last-child{border-bottom:0}
-.dsr-head{
-  width:100%;display:flex;align-items:baseline;gap:.7rem;text-align:left;cursor:pointer;
-  background:transparent;border:0;padding:1rem 1.05rem;color:inherit;font:inherit;
-  transition:background .2s;
-}
-.dsr-head:hover{background:var(--surface-2)}
-.dsr-head .nm{
-  font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.1rem;
-  letter-spacing:-.03em;color:var(--ink);
-}
-.dsr-head .kd{
-  font-family:"JetBrains Mono",monospace;font-size:.6rem;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--ink-3);
-}
-.dsr-head .sp{flex:1}
-.dsr-head .st{
-  font-family:"JetBrains Mono",monospace;font-size:.57rem;letter-spacing:.11em;text-transform:uppercase;
-  border:1px solid var(--line);border-radius:99px;padding:.16rem .45rem;color:var(--ink-3);white-space:nowrap;
-}
-.dsr-head .st.live{color:var(--signal);border-color:color-mix(in oklab,var(--signal) 45%,transparent)}
-.dsr-head .st.wip{color:var(--gold);border-color:color-mix(in oklab,var(--gold) 45%,transparent)}
-.dsr-head .cv{color:var(--ink-3);font-family:monospace;transition:transform .3s ease;flex:none}
-.dsr[open] .cv,.dsr.open .cv{transform:rotate(90deg)}
-.dsr-body{padding:0 1.05rem 1.15rem;display:none}
-.dsr.open .dsr-body{display:block}
-.dsr-line{color:var(--ink-2);font-size:1rem;margin:0 0 1.1rem;max-width:62ch}
-.dsr-sec{margin-bottom:.95rem;max-width:66ch}
-.dsr-sec:last-of-type{margin-bottom:1.1rem}
-.dsr-sec h5{
-  font-family:"JetBrains Mono",monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--signal);margin:0 0 .3rem;font-weight:700;
-}
-.dsr-sec p{margin:0;font-size:.97rem;line-height:1.58;color:var(--ink-2)}
-.dsr-sec p b{color:var(--ink);font-weight:500}
-.dsr-foot{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center}
-.dsr-foot a{
-  font-family:"JetBrains Mono",monospace;font-size:.6rem;letter-spacing:.05em;text-decoration:none;
-  border:1px solid var(--signal);color:var(--signal);border-radius:4px;padding:.2rem .45rem;transition:all .2s;
-}
-.dsr-foot a:hover{background:var(--signal);color:var(--void)}
-@media (max-width:520px){
-  .dsr-head{flex-wrap:wrap;gap:.3rem .55rem;align-items:center}
-  .dsr-head .sp{display:none}
-  .dsr-head .nm{flex:1 1 auto;font-size:1.05rem}
-  .dsr-head .st{order:2}
-  .dsr-head .kd{order:3;flex:1 1 100%;padding-left:1.1rem}
-}
-
 /* ── skills ─────────────────────────────────────────────── */
 .skills{display:grid;gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:12px;overflow:hidden}
 @media (min-width:700px){.skills{grid-template-columns:repeat(2,1fr)}}
@@ -461,8 +409,8 @@ footer .big em{font-style:normal;color:var(--signal)}
 .rk{color:var(--ink-3);white-space:pre}
 .rv{color:var(--signal);font-weight:700;text-align:right}
 
-/* LTAS provider pills + dossier stack chips */
-.prov,.dsr-foot .chip{font-family:"JetBrains Mono",monospace}
+/* LTAS provider pills */
+.prov{font-family:"JetBrains Mono",monospace}
 .prov{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.85rem}
 .prov span,.chip{
   font-size:.62rem;color:var(--ink-3);border:1px solid var(--line);
@@ -944,7 +892,6 @@ footer .big em{font-style:normal;color:var(--signal)}
     <a href="#the_shift">the_shift</a>
     <a href="#the_masters">the_masters</a>
     <a href="#the_thesis">the_thesis</a>
-    <a href="#build_log">build_log</a>
     <a href="#toolkit">toolkit</a>
     <a href="#contact">SELECT * FROM now</a>
   </nav>
@@ -1481,7 +1428,7 @@ footer .big em{font-style:normal;color:var(--signal)}
   <div class="act rise">
     <div class="n">Act III</div>
     <h3>The deeper end</h3>
-    <p>A master's degree, a thesis, and the projects where I got to choose the problem. This is where I find out what I actually believe about building software.</p>
+    <p>A master's degree and a thesis, taken while working. This is where I find out what I actually believe about building software.</p>
   </div>
 
   <!-- ─────────── THE MASTERS ─────────── -->
@@ -1630,21 +1577,6 @@ footer .big em{font-style:normal;color:var(--signal)}
     </div>
   </section>
 
-
-  <!-- ─────────── 07 BUILD LOG ─────────── -->
-  <section class="chapter" id="build_log">
-    <div class="ch-tag mono rise">), <span class="nm">build_log</span> <span class="kw">AS</span> (</div>
-    <div class="col">
-      <h2 class="display rise">Five builds, and what each one actually taught me.</h2>
-      <p class="rise">The academic work is above. These are the ones nobody assigned me, and each opens into what broke and what I did about it.</p>
-    </div>
-
-    <div class="dossier rise" id="dossier" style="margin-top:2.2rem"></div>
-
-    <div class="col">
-      <p class="rise" style="margin-top:2rem">The last entry on that list is a thing I have not built. It's there on purpose. A portfolio that only shows finished work is telling you what someone wants to be believed about them, not what they're actually doing.</p>
-    </div>
-  </section>
 
   <!-- ─────────── 08 TOOLKIT ─────────── -->
   <section class="chapter" id="toolkit">
@@ -2040,94 +1972,6 @@ if(liPicker){
   });
   build();
 }
-
-/* ── project dossier ────────────────────────────────────── */
-var PROJECTS = [
-["Leshana","App · ancient language learning","prototype","wip",
- "A Duolingo-shaped app for the languages of the ancient Near East.",
- "Duolingo has over 500 million users and teaches none of these languages. Classical Syriac, Biblical Aramaic, Ge'ez, Akkadian, Phoenician. If you want to read scripture or archive material in the original, there is nowhere engaging to go.",
- "A mobile-first web app. The launch pair is Classical Syriac in Estrangela script alongside Biblical Aramaic, with an in-lesson hint system and a tutor chat. Right-to-left text and non-Latin script handling shaped most of the early design decisions.",
- "The signature mechanic is the trilateral root. Semitic languages build vocabulary from three-consonant skeletons: K-T-B produces write, book, letter, writer, written. Teaching by root rather than by word list means one lesson unlocks five words, and there is no European-language app to copy the interaction pattern from. It had to come from the grammar up.",
- "Prototype. Roadmap runs through Hebrew, Ge'ez, Quranic Arabic and Coptic, then Akkadian, Phoenician and Ugaritic.",
- ["React","Vite","Tailwind","Claude API"],
- null,null],
-
-["Forge","App · fitness tracking","phase 0 done","wip",
- "One app replacing four subscriptions I refused to keep paying for.",
- "The tracking I wanted was spread across four apps: adaptive macros in one, lifting logs in another, photo food logging in a third, programming in a fourth. Four subscriptions for one routine.",
- "A single codebase shipping iOS, Android and web. The calorie target is calculated from a smoothed weight trend rather than a fixed formula, so it moves with the actual data instead of a guess. Workout logging, photo food logging through a vision model, and passive sync from Apple Health and Health Connect.",
- "Working offline. A gym basement is the worst network environment there is, and a tracker that loses a set is worse than no tracker. Every entry queues locally with its own ID so replays cannot double-count, and the app stays fully usable in airplane mode.",
- "Phase 0 complete: database, auth and the app shell. Nutrition tracking is next.",
- ["Expo","TypeScript","Supabase","Vision model"],
- null,null],
-
-["Claude Skills library","Tooling · 27 skills","adopted by the team","live",
- "My working methods written down, so they survive the next model.",
- "I kept re-explaining the same context to a model every time I started something. That knowledge lived in my head and in old chat logs, which meant it did not transfer to anyone else and evaporated whenever the tooling changed.",
- "27 skills covering the workflows I actually run, each written to trigger on the right kind of task. Client specifics stripped out so the patterns generalise beyond the account they came from.",
- "Writing them so they stay useful when the model underneath changes. A skill that encodes a workaround for one model's quirk is worse than no skill, because it will quietly mislead the next one. Everything had to describe the shape of the problem, not the shape of the fix.",
- "In use across the team, and part of why I now set AI tooling standards rather than just using what gets handed down.",
- ["Prompt engineering","MCP","Claude Code"],
- null,null],
-
-["Arabic voice agents for MENA SMBs","Exploration · not built","validating","",
- "The idea I keep circling, and have deliberately not started.",
- "The big voice platforms are English-first, and their Arabic falls apart on Khaleeji, Egyptian and Levantine code-switching, which is exactly how people talk in Gulf business. A clinic receptionist that survives a real Lebanese sentence is genuinely hard and genuinely useful.",
- "Architecturally it is LIRION pointed at one industry, using off-the-shelf speech tools rather than custom model work. The engineering is largely done already.",
- "Not the engineering. Validation. I ran the competitive scan and the market is less empty than it looked from the inside, and I have not yet tested what already exists with a native ear against a real customer's actual call volume. Until I have, building more is just avoiding the question.",
- "Unbuilt, and listed here anyway. I would rather show what I am reasoning about than only the things that already worked.",
- ["LIRION core","Telephony","Levantine &amp; Khaleeji Arabic"],
- null,null]
-];
-
-var dsr = document.getElementById("dossier");
-var LBL = ["The problem","What I built","The hard part","Where it stands"];
-function buildDossier(host, list){
-  if(!host) return;
-  list.forEach(function(pr,i){
-  var wrap = document.createElement("div");
-  wrap.className = "dsr" + (i===0 ? " open" : "");
-  var btn = document.createElement("button");
-  btn.className = "dsr-head"; btn.type = "button";
-  btn.setAttribute("aria-expanded", i===0 ? "true" : "false");
-  btn.innerHTML = '<span class="cv">&#9656;</span><span class="nm"></span><span class="kd"></span>'
-                + '<span class="sp"></span><span class="st"></span>';
-  btn.querySelector(".nm").innerHTML = pr[0];
-  btn.querySelector(".kd").textContent = pr[1];
-  var stq = btn.querySelector(".st");
-  stq.textContent = pr[2];
-  if(pr[3]) stq.classList.add(pr[3]);
-  var body = document.createElement("div");
-  body.className = "dsr-body";
-  var html = '<p class="dsr-line"></p>';
-  for(var k=0;k<4;k++) html += '<div class="dsr-sec"><h5></h5><p></p></div>';
-  html += '<div class="dsr-foot"></div>';
-  body.innerHTML = html;
-  body.querySelector(".dsr-line").textContent = pr[4];
-  var secs = body.querySelectorAll(".dsr-sec");
-  for(var k=0;k<4;k++){
-    secs[k].querySelector("h5").textContent = LBL[k];
-    secs[k].querySelector("p").textContent = pr[5+k];
-  }
-  var foot = body.querySelector(".dsr-foot");
-  pr[9].forEach(function(c){
-    var sp = document.createElement("span");
-    sp.className = "chip"; sp.innerHTML = c; foot.appendChild(sp);
-  });
-  if(pr[10]){
-    var a = document.createElement("a");
-    a.href = pr[10]; a.target = "_blank"; a.rel = "noopener";
-    a.textContent = pr[11] + " \u2197"; foot.appendChild(a);
-  }
-  btn.addEventListener("click", function(){
-    var open = wrap.classList.toggle("open");
-    btn.setAttribute("aria-expanded", open ? "true" : "false");
-  });
-  wrap.appendChild(btn); wrap.appendChild(body); host.appendChild(wrap);
-  });
-}
-buildDossier(dsr, PROJECTS);
-
 
 /* ═══ LAB WIDGET 5 — handwriting bench (COE544) ═════════
    Nothing here is looked up. The visitor draws, the same
